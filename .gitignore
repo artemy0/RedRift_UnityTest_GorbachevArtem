@@ -1,0 +1,54 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+sysinfo.txt
+*.stackdump
+
+!ClientProject/Packages/com.unity.addressables*/Editor/Build
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+.vs/
+.vscode/
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln*
+*.user
+*.unityproj
+*.booproj
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
+/*.apk
+/ClassDiagram1.cd
+/Assets/Core/Plugins/*.mdb
+/*.obb
+
+
+# ===== #
+# Other #
+# ===== #
+
+/ClientProject/Assets/GamplaySystemsAndControllers/Resources/EditorConfig/EditorConfig.xml
+.idea/
+JetBrains/
+JetBrains.meta
+*.apk
+
+Assets/Sandbox
