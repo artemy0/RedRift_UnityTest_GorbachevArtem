@@ -22,19 +22,19 @@
 
 # Структура проекта:
 |-- Assets
-        |-- Datas
-        |-- Plugins
-        |-- Prefabs
-        |-- Resources
-        |-- SandBox
-        |-- Scenes
-        |-- Scripts
-        |-- Sprites
+  |-- Data
+  |-- Plugins
+  |-- Prefabs
+  |-- Resources
+  |-- Sandbox
+  |-- Scenes
+  |-- Scripts
+  |-- Sprites
 
 # Срок выполнения:
 Около 5-и дней
 
-# Плагины, использованные в проекте:
+# Плагины:
 * DOTween
 * TextMeshPro
 * UniTask
