@@ -1156,51 +1156,10 @@ MonoBehaviour:
   title: {fileID: 8769914732372710041}
   description: {fileID: 6997264764019204311}
   art: {fileID: 7525580445426334658}
-  changeTextCureve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.0042240657
-      outSlope: -0.0042240657
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.27916667
-    - serializedVersion: 3
-      time: 0.2
-      value: 0.5
-      inSlope: -0.002456824
-      outSlope: -0.002456824
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.85
-      value: 0.5
-      inSlope: 0.005202773
-      outSlope: 0.005202773
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.31063437
-      outWeight: 1
-    - serializedVersion: 3
-      time: 1
-      value: 1.5
-      inSlope: -0.005145679
-      outSlope: -0.005145679
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.22916669
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  changeTextTime: 0.1
+  changeTextEase: 7
+  changeTextDuration: 0.25
   resultDisplayDuration: 0.5
-  "health\u0421hange\u0421olor": {r: 0.8113208, g: 0.32768226, b: 0.14159843, a: 1}
+  "health\u0421hange\u0421olor": {r: 1, g: 0.5585763, b: 0, a: 1}
 --- !u!223 &7257581593412395829
 Canvas:
   m_ObjectHideFlags: 0

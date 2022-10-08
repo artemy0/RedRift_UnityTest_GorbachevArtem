@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using System;
+using DG.Tweening;
 
 public class CardView : MonoBehaviour
 {
@@ -22,15 +23,12 @@ public class CardView : MonoBehaviour
     [SerializeField] private RawImage art;
 
     [Header("Animation")]
-    [SerializeField] private AnimationCurve changeTextCureve;
-    [SerializeField] private float changeTextTime;
+    [SerializeField] private Ease changeTextEase = Ease.InOutQuart;
+    [SerializeField] private float changeTextDuration = 0.25f;
     [Space]
     [SerializeField] private float resultDisplayDuration = 0.5f;
-    [SerializeField] private Color health—hange—olor;
+    [SerializeField] private Color healthChangeColor;
 
-    private Coroutine helthChangeAnimation;
-
-    private WaitForSeconds healthColorWaiter;
     private Color healthDefaultColor;
 
     public void Initialize(CardModel value)
@@ -44,7 +42,6 @@ public class CardView : MonoBehaviour
 
         art.texture = value.Texture;
 
-        healthColorWaiter = new WaitForSeconds(resultDisplayDuration);
         healthDefaultColor = healthBackground.color;
     }
 
@@ -55,35 +52,20 @@ public class CardView : MonoBehaviour
 
     public void SetHealth(int currentHealth, int targetHealth)
     {
-        if(helthChangeAnimation != null)
-        {
-            StopCoroutine(helthChangeAnimation);
-            OnHealthChangeAnimationFinished?.Invoke();
-        }
-        helthChangeAnimation = StartCoroutine(AnimateHealthChange(currentHealth, targetHealth));
+        var duration = Mathf.Abs(targetHealth - currentHealth) * changeTextDuration;
+
+        var healthSettingSequence = DOTween.Sequence()
+            .OnComplete(CompleteHealthSetting);
+        healthSettingSequence.Append(
+            healthBackground.DOColor(healthChangeColor, resultDisplayDuration));
+        healthSettingSequence.Append(
+            health.DOCounter(currentHealth, targetHealth, duration).SetEase(changeTextEase));
+        healthSettingSequence.Append(
+            healthBackground.DOColor(healthDefaultColor, resultDisplayDuration));
     }
 
-    private IEnumerator AnimateHealthChange(int initHealth, int targetHealth)
+    private void CompleteHealthSetting()
     {
-        healthBackground.color = health—hange—olor;
-        
-        if (initHealth != targetHealth)
-        {
-            var iterationSign = (int)Mathf.Sign(targetHealth - initHealth);
-            for (int currentHealth = initHealth; currentHealth != targetHealth + iterationSign; currentHealth += iterationSign)
-            {
-                var waitTime = changeTextCureve.Evaluate((currentHealth - initHealth) / (float)(targetHealth - initHealth)) * changeTextTime;
-                yield return new WaitForSeconds(waitTime);
-
-                health.text = currentHealth.ToString();
-            }
-
-        }
-
-        yield return healthColorWaiter;
-        healthBackground.color = healthDefaultColor;
-
-        helthChangeAnimation = null;
         OnHealthChangeAnimationFinished?.Invoke();
     }
 }
