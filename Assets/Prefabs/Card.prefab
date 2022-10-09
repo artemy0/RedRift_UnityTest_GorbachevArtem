@@ -585,6 +585,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5480845533888195734}
   - component: {fileID: 5375140198037342584}
+  - component: {fileID: 4502075159288372914}
+  - component: {fileID: 4591460776629559497}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -621,6 +623,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardView: {fileID: 2485931978294322577}
+  interactable: {fileID: 4502075159288372914}
+--- !u!114 &4502075159288372914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304693300994833584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cf3d5c575a40d4eb3dc50cc58f2f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &4591460776629559497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304693300994833584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 4.25, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5412962755455767735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1132,7 @@ GameObject:
   - component: {fileID: 2485931978294322577}
   - component: {fileID: 7257581593412395829}
   - component: {fileID: 2273779902233952331}
+  - component: {fileID: 4632873559571226602}
   - component: {fileID: 1040200796029098031}
   m_Layer: 5
   m_Name: CardCanvas
@@ -1149,6 +1178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 7257581593412395829}
+  canvasGroup: {fileID: 4632873559571226602}
   mana: {fileID: 143872931874090397}
   healthBackground: {fileID: 9052425421802115165}
   health: {fileID: 4798304004361938739}
@@ -1159,7 +1189,8 @@ MonoBehaviour:
   changeTextEase: 7
   changeTextDuration: 0.25
   resultDisplayDuration: 0.5
-  "health\u0421hange\u0421olor": {r: 1, g: 0.5585763, b: 0, a: 1}
+  healthChangeColor: {r: 1, g: 0.54467595, b: 0, a: 1}
+  selecteAlpha: 0.3
 --- !u!223 &7257581593412395829
 Canvas:
   m_ObjectHideFlags: 0
@@ -1204,6 +1235,18 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
+--- !u!225 &4632873559571226602
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369475713383082971}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1040200796029098031
 MonoBehaviour:
   m_ObjectHideFlags: 0

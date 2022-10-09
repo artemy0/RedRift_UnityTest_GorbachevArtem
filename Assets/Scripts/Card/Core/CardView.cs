@@ -11,6 +11,7 @@ public class CardView : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] private Canvas canvas;
+    [SerializeField] private CanvasGroup canvasGroup;
     [Space]
     [SerializeField] private TextMeshProUGUI mana;
     [SerializeField] private Image healthBackground;
@@ -28,6 +29,8 @@ public class CardView : MonoBehaviour
     [Space]
     [SerializeField] private float resultDisplayDuration = 0.5f;
     [SerializeField] private Color healthChangeColor;
+    [Space]
+    [SerializeField] private float selecteAlpha = 0.3f;
 
     private Color healthDefaultColor;
 
@@ -48,6 +51,11 @@ public class CardView : MonoBehaviour
     public void SetLayer(int value)
     {
         canvas.sortingOrder = value;
+    }
+
+    public void SetSelecte(bool value)
+    {
+        canvasGroup.alpha = value ? selecteAlpha : 1f;
     }
 
     public void SetHealth(int currentHealth, int targetHealth)

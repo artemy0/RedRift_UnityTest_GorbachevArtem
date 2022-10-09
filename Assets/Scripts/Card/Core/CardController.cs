@@ -3,11 +3,13 @@ using System;
 
 public class CardController : MonoBehaviour
 {
+    public event Action<CardController> OnDroped;
     public event Action<CardController> OnDestoryed;
 
     public CardFactory OriginFactory { get; set; }
 
     [SerializeField] private CardView cardView;
+    [SerializeField] private Interactable interactable;
     
     private CardModel cardModel;
 
@@ -30,7 +32,12 @@ public class CardController : MonoBehaviour
         cardView.OnHealthChangeAnimationFinished += cardModel.CheckDestroy;
         cardModel.OnDestroyed += DestroyCard;
 
+        interactable.OnSelected += Select;
+        interactable.OnReleased += Release;
+        interactable.OnDroped += Drop;
+
         cardView.Initialize(cardModel);
+        interactable.SetInteractableActive(true);
     }
 
     public void ChangeHealth(int value)
@@ -48,6 +55,22 @@ public class CardController : MonoBehaviour
         OnDestoryed?.Invoke(this);
         OriginFactory.Reclaim(this);
     }
+    
+    private void Select()
+    {
+        cardView.SetSelecte(true);
+    }
+    private void Release()
+    {
+        cardView.SetSelecte(false);
+    }
+    private void Drop()
+    {
+        cardView.SetSelecte(false);
+        interactable.SetInteractableActive(false);
+
+        OnDroped?.Invoke(this);
+    }
 
     private void OnDestroy()
     {
@@ -55,5 +78,9 @@ public class CardController : MonoBehaviour
         cardModel.OnHealthChanged -= cardView.SetHealth;
         cardView.OnHealthChangeAnimationFinished -= cardModel.CheckDestroy;
         cardModel.OnDestroyed -= DestroyCard;
+
+        interactable.OnSelected -= Select;
+        interactable.OnReleased -= Release;
+        interactable.OnDroped -= Drop;
     }
 }

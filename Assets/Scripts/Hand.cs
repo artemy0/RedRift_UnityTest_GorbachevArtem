@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,6 +52,7 @@ public class Hand : MonoBehaviour
         {
             cards.Add(card);
             card.OnDestoryed += RemoveCard;
+            card.OnDroped += RemoveCard;
 
             card.transform.parent = transform;
 
@@ -62,12 +64,13 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void RemoveCard(CardController card)
+    private void RemoveCard(CardController card)
     {
         if (cards.Contains(card))
         {
             cards.Remove(card);
             card.OnDestoryed -= RemoveCard;
+            card.OnDroped -= RemoveCard;
 
             card.transform.parent = null;
 
